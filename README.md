@@ -1,3 +1,2 @@
 # nestjs
-start nestJs
-use yarn
+use nestJs
