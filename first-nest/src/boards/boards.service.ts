@@ -9,7 +9,7 @@ export class BoardsService {
     getAllBoards(): Board[]{
         return this.boards;
     }
-
+    
     createBoard(title: string, description: string){
         const board:Board = {
             id: uuid(),
@@ -17,7 +17,7 @@ export class BoardsService {
             description,
             status: BoardStatus.PUBLIC
         }
-        this.boards.push(board)
+        this.boards.push(board);
         return board;
     }
 }

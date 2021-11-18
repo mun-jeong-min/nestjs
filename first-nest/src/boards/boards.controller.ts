@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { Board } from './board.model';
 import { BoardsService } from './boards.service';
 
@@ -7,7 +7,14 @@ export class BoardsController {
     constructor(private boardsService: BoardsService){}
 
 @Get('/')
-getAllBoard(): Board[]{ // interface 시에는 배열 표시를 위해 타입지정 뒤에 [] 붙여준다
+getAllBoard(): Board[]{
     return this.boardsService.getAllBoards();
+}
+@Post('/')
+createBoard(
+    @Body('title') title:string,
+    @Body('description') description:string,   
+): Board { 
+    return this.boardsService.createBoard(title, description);
 }
 }
