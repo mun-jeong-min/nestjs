@@ -1,12 +1,14 @@
 import { Injectable } from '@nestjs/common';
+import { CreateTestDto } from './DTO/create-test';
 
 @Injectable()
 export class AppService {
   public async getHello(): Promise<string> {
-    return 'Hello World!';
+    return `Hello`;
   }
 
-  public async resHello(name:string):Promise<string> {
-    return `Hello ${name}`
+  public async create(createTestDto:CreateTestDto):Promise<string>{
+    const {name,age} = createTestDto
+    return `${age} ${name}`;
   }
 }
