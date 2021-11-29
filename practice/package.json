@@ -1,8 +1,8 @@
 {
-  "name": "first-nest",
+  "name": "practice",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "munjeongmin <83737498+liverfool@users.noreply.github.com>",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
@@ -21,20 +21,12 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@nestjs/common": "^8.2.2",
+    "@nestjs/common": "^8.0.0",
     "@nestjs/core": "^8.0.0",
     "@nestjs/platform-express": "^8.0.0",
-    "@nestjs/platform-socket.io": "^8.2.1",
-    "@nestjs/swagger": "^5.1.5",
-    "@nestjs/typeorm": "^8.0.2",
-    "@nestjs/websockets": "^8.2.1",
-    "mysql2": "^2.3.3",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^7.2.0",
-    "socket.io-client": "^4.3.2",
-    "swagger-ui-express": "^4.1.6",
-    "uuid": "^8.3.2"
+    "rxjs": "^7.2.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.0.0",
@@ -43,8 +35,6 @@
     "@types/express": "^4.17.13",
     "@types/jest": "^27.0.1",
     "@types/node": "^16.0.0",
-    "@types/socket.io": "^3.0.2",
-    "@types/socket.io-client": "^3.0.0",
     "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
@@ -77,5 +67,6 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
-  }
+  },
+  "main": "index.js"
 }

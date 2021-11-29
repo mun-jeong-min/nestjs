@@ -8,26 +8,30 @@ export class BoardsController {
   constructor(private boardsService: BoardsService) {}
 
   @Get('/')
-  getAllBoard(): Board[] {
-    return this.boardsService.getAllBoards();
+  public async getAllBoard(): Promise<Board[]> {
+    return await this.boardsService.getAllBoards();
   }
+
   @Get('/:id')
   findBoardById(@Param('id') id: string): Board {
     return this.boardsService.findBoardById(id);
   }
+
   @Post('/')
   createBoard(@Body() createBoardDto: CreateBoardDto): Board {
     return this.boardsService.createBoard(createBoardDto);
   }
+
+  @Delete('/:id')
+  deleteBoard(@Param('id') id: string): void {
+      this.boardsService.deleteBoard(id)
+  }
+  
   @Patch('/:id')
   updateStatus(
       @Param('id') id:string,
       @Body('status') status:BoardStatus
   ){
       return this.boardsService.updateStatus(id, status);
-  }
-  @Delete('/:id')
-  deleteBoard(@Param('id') id: string): void {
-      this.boardsService.deleteBoard(id)
   }
 }
