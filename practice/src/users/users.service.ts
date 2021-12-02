@@ -1,9 +1,10 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/entity/users.entity';
 import { Repository } from 'typeorm';
 import { SignupDto } from './dto/signup.dto';
-import { hash } from 'bcrypt';
+import { hash,compare } from 'bcrypt';
+import { loginDto } from './dto/login.dto';
 
 @Injectable()
 export class UsersService {
@@ -17,13 +18,27 @@ export class UsersService {
 
   public async signup({ id, password }: SignupDto) {
 
-    if(this.userRepository.findOne({id: id})) {
-        throw new BadRequestException();
-    }
-
     await this.userRepository.save({
       id: id,
       password: await hash(password, 12),
     });
+  }
+
+  public async login(body: loginDto) {
+      const admin = await this.userRepository.findOne({id: body.id})
+      if(admin.id !== body.id){
+          throw new NotFoundException();
+      }
+      await this.verify(body.password,admin.password)
+      return {
+          message: '로그인 성공'
+      }
+  }
+
+  private async verify(password1:string, password2:string):Promise<void>{
+      const match = await compare(password1,password2)
+      if(!match){
+          throw new NotFoundException();
+      }
   }
 }
