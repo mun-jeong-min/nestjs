@@ -34,8 +34,10 @@ export class UsersService {
       }
       
       await this.verify(body.password,admin.password)
-      
-      const payload = {admin}
+      const username = admin.username;
+      const payload = {
+          username
+      }
       const accessToken = await this.jwtService.sign(payload);
       
       return {

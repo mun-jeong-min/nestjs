@@ -4,6 +4,6 @@ import { Injectable } from '@nestjs/common';
 export class AppService {
 
   public async getHello(): Promise<string> {
-    return await 'Hello, World!';
+    return await '문정민 웹사이트';
   }
 }
